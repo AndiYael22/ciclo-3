@@ -1,0 +1,75 @@
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+
+public class Tests {
+	@Test
+	public void testcrearCategoriaPorDefecto() {
+		 Hotel hotel = new Hotel();
+		  hotel.crearCategoriasPorDefecto();
+	        assertEquals(3, hotel.listaCategorias.size());
+
+	}
+	
+	@Test
+	public void testmodificarCategoria() {
+		 Hotel hotel = new Hotel();
+	        hotel.crearCategoriasPorDefecto();
+	        hotel.modificarCategoria(1, "D", 70, "Nueva clase");
+	        assertEquals("D", hotel.tomarCategoria(1).idCategoria);
+	        assertEquals(70, hotel.tomarCategoria(1).precioCategoria);
+	        assertEquals("Nueva clase", hotel.tomarCategoria(1).descripcionCategoria);
+	    
+
+	}
+	
+	@Test
+	public void testnuevaCategoria() {
+		 Hotel hotel = new Hotel();
+
+	}
+	
+	@Test
+	public void testeliminarCategoria() {
+		 Hotel hotel = new Hotel();
+
+	}
+	
+	@Test
+	public void testtomarCategoria() {
+		 Hotel hotel = new Hotel();
+
+	}
+	
+	@Test
+	public void testnuevoCliente() {
+		 Hotel hotel = new Hotel();
+
+	}
+	
+	@Test
+	public void testmodificarCliente() {
+		 Hotel hotel = new Hotel();
+
+	}
+	
+	@Test
+	public void testeliminarCliente() {
+		 Hotel hotel = new Hotel();
+
+	}
+	
+	@Test
+	public void testsalvarClientesCategorias() {
+		 Hotel hotel = new Hotel();
+
+	}
+	
+	@Test
+	public void testcargarClientesCategorias() {
+		 Hotel hotel = new Hotel();
+
+	}
+	
+}
+	

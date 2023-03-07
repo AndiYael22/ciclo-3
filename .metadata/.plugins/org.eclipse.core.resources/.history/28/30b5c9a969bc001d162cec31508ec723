@@ -1,0 +1,65 @@
+import org.junit.Test;
+
+public class Tests {
+	@Test
+	public void testcrearCategoriaPorDefecto() {
+	
+
+	}
+	
+	@Test
+	public void testmodificarCategoria() {
+	
+
+	}
+	
+	@Test
+	public void testnuevaCategoria() {
+	
+
+	}
+	
+	@Test
+	public void testeliminarCategoria() {
+	
+
+	}
+	
+	@Test
+	public void testtomarCategoria() {
+	
+
+	}
+	
+	@Test
+	public void testnuevoCliente() {
+	
+
+	}
+	
+	@Test
+	public void testmodificarCliente() {
+	
+
+	}
+	
+	@Test
+	public void testeliminarCliente() {
+	
+
+	}
+	
+	@Test
+	public void testsalvarClientesCategorias() {
+	
+
+	}
+	
+	@Test
+	public void testcargarClientesCategorias() {
+	
+
+	}
+	
+}
+	

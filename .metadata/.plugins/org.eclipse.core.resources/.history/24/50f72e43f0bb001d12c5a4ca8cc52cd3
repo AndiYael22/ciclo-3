@@ -1,0 +1,38 @@
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+public class test {
+
+    @Test
+    public void testReservarHabitacion() {
+        // Crear un objeto GestorReservas
+        GestorReservas gestor = new GestorReservas();
+        
+        // Crear una habitación disponible
+        Habitacion habitacion = new Habitacion(101, "sencilla", 100.0, true);
+        
+        // Reservar la habitación
+        boolean resultado = gestor.reservarHabitacion(habitacion, "2023-03-10", "2023-03-15");
+        
+        // Verificar que la reserva fue exitosa
+        assertTrue(resultado);
+        
+        // Verificar que la habitación ya no está disponible
+        assertFalse(habitacion.estaDisponible());
+    }
+}
+Este ejemplo crea un objeto GestorReservas, una habitación disponible y realiza una reserva utilizando el método reservarHabitacion(). Luego, se verifica que la reserva fue exitosa y que la habitación ya no está disponible.
+
+Es importante tener en cuenta que este ejemplo es solo una guía y que el proceso real de creación de pruebas unitarias dependerá de los detalles específicos del proyecto y de las áreas que se quieran probar. Espero que esta información te sea útil para comenzar a crear tus propias pruebas unitarias en el proyecto de Java Hotel.
+
+
+
+
+Andi Yael Blancas Vazquez
+podrias decirme de que archivo debo hacer las pruebas?
+Para hacer pruebas unitarias en Java, generalmente se crean clases de prueba separadas que contienen métodos de prueba para las diferentes secciones del código que se quieren probar. Los métodos de prueba se escriben para verificar que los métodos de la clase que se están probando funcionan correctamente y producen los resultados esperados.
+
+En el proyecto de Java Hotel que compartiste, puedes crear una carpeta llamada test dentro de la raíz del proyecto y dentro de esta carpeta, una estructura de carpetas que coincida con la estructura de carpetas de las clases que quieres probar. Por ejemplo, si quieres hacer pruebas en la clase GestorReservas que se encuentra en el archivo src/main/java/com/hotel/GestorReservas.java, puedes crear una carpeta com/hotel dentro de test, y dentro de esta carp
+
+
+

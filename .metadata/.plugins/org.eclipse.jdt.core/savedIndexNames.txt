@@ -1,0 +1,6 @@
+INDEX VERSION 1.131+C:\Users\Yui\Desktop\naoxtecmilenio\.metadata\.plugins\org.eclipse.jdt.core
+103142779.index
+2136594986.index
+676096586.index
+1865797976.index
+3904759895.index

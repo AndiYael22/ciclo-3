@@ -1,0 +1,37 @@
+import org.junit.Test;
+
+public class Tests {
+	@Test
+	public void testcrearCategoria() {
+		 Hotel hotel = new Hotel();
+		   Categoria categoria = new Categoria("Individual", 100, "");
+		   hotel.tomarCategoria(categoria);
+		   assertEquals(categoria, hotel.buscarCategoria("Individual"));
+	}
+	@Test
+	public void testmodificarCategoria() {
+		
+	}
+	@Test
+	public void testagregarCliente() {
+		  Hotel hotel = new Hotel();
+		   Cliente cliente = new Cliente("Juan", "Pérez", "1234567890");
+		   hotel.crearCliente(cliente);
+		   assertEquals(cliente, hotel.buscarCliente("1234567890"));
+		
+	}
+	@Test
+	public void testeliminarCliente() {
+		
+	}
+	@Test
+	public void testguardarDatos() {
+		
+	}
+	@Test
+	public void testcargarDatos() {
+		
+	}
+
+
+}

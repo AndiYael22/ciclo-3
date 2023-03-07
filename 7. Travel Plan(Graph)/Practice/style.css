@@ -1,0 +1,16 @@
+html,
+/* body en pocas palabras es el cuerpo dela pagina web aqui definimos que el alto de la pagina sera el 100% */
+body {
+    height: 100%;
+}
+/* en este contenedor definimos que el ancho debe ser el 100% y tendra un alto de 500 pixeles ademas de un borde gris de 3 pixeles de ancho */
+#container {
+    width: 100%;
+    height: 500px;
+    border: 3px solid darkgray;
+}
+/* aqui definimos que el margen sea automatico y su forma de mostrarte sea un bloque que no permite mas objetos alos lados */
+#generate-graph{
+    margin:auto;
+    display:block;
+}

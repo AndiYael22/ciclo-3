@@ -1,0 +1,149 @@
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
+import java.io.File;
+import java.util.Date;
+
+import org.junit.Test;
+
+public class Tests {
+	@Test
+	public void testcrearCategoriaPorDefecto() {
+		 Hotel hotel = new Hotel();
+		  hotel.crearCategoriasPorDefecto();
+	        assertEquals(3, hotel.listaCategorias.size());
+
+	}
+	
+	@Test
+	public void testmodificarCategoria() {
+		 Hotel hotel = new Hotel();
+	        hotel.crearCategoriasPorDefecto();
+	        hotel.modificarCategoria(1, "D", 70, "Nueva clase");
+	        assertEquals("D", hotel.tomarCategoria(1).idCategoria);
+	        assertEquals(70, hotel.tomarCategoria(1).precioCategoria);
+	        assertEquals("Nueva clase", hotel.tomarCategoria(1).descripcionCategoria);
+	    
+
+	}
+	
+	@Test
+	public void testnuevaCategoria() {
+		 Hotel hotel = new Hotel();
+		
+	        hotel.nuevaCategoria("E", 20, "Nueva clase");
+	        assertEquals("E", hotel.tomarCategoria(0).idCategoria);
+	        assertEquals(20, hotel.tomarCategoria(0).precioCategoria);
+	        assertEquals("Nueva clase", hotel.tomarCategoria(0).descripcionCategoria);
+	   
+	}
+	
+	@Test
+	public void testeliminarCategoria() {
+		 Hotel hotel = new Hotel();
+		 hotel.crearCategoriasPorDefecto();
+	        hotel.eliminarCategoria(1);
+	        assertEquals("A", hotel.tomarCategoria(0).idCategoria);
+	        assertEquals("C", hotel.tomarCategoria(1).idCategoria);
+
+	}
+	
+	@Test
+	public void testtomarCategoria() {
+		 Hotel hotel = new Hotel();
+		 hotel.crearCategoriasPorDefecto();
+	        Categoria categoria = hotel.tomarCategoria(1);
+	        assertNotNull(categoria);
+	        assertEquals("B", categoria.idCategoria);
+	        assertEquals(50, categoria.precioCategoria);
+	        assertEquals("Clase Media", categoria.descripcionCategoria);
+
+	}
+	
+	@Test
+	public void testnuevoCliente() {
+		 Hotel hotel = new Hotel();
+		    hotel.nuevoCliente("12345678A", "Juan", "Perez", "Gomez", "Calle falsa 123", 101, new Date(), new Date());
+		    assertEquals("El número de clientes no es correcto", 1, hotel.listaClientes.size());
+		    Cliente cliente = hotel.tomarCliente(0);
+		    assertEquals("El DNI del cliente no es correcto", "12345678A", cliente.dniCliente);
+		    assertEquals("El nombre del cliente no es correcto", "Juan", cliente.nombreCliente);
+		    assertEquals("El primer apellido del cliente no es correcto", "Perez", cliente.apellido1Cliente);
+		    assertEquals("El segundo apellido del cliente no es correcto", "Gomez", cliente.apellido2Cliente);
+		    assertEquals("La dirección del cliente no es correcta", "Calle falsa 123", cliente.direccionCliente);
+		    assertEquals("El número de habitación del cliente no es correcto", 101, cliente.numeroHabitacion);
+		    assertTrue("La fecha de entrada del cliente no es correcta", cliente.fechaEntrada.getTime() <= new Date().getTime());
+		    assertTrue("La fecha de salida del cliente no es correcta", cliente.fechaSalida.getTime() >= new Date().getTime());
+		  
+
+	}
+	
+	@Test
+	public void testmodificarCliente() {
+		 Hotel hotel = new Hotel();
+		 hotel.nuevoCliente("12345678A", "Juan", "Perez", "Gomez", "Calle falsa 123", 101, new Date(), new Date());
+		    hotel.modificarCliente(0, "87654321B", "Pedro", "Garcia", "Lopez", "Calle falsa 321", 102, new Date(), new Date());
+		    Cliente cliente = hotel.tomarCliente(0);
+		    assertEquals("El DNI del cliente no ha sido modificado correctamente", "87654321B", cliente.dniCliente);
+		    assertEquals("El nombre del cliente no ha sido modificado correctamente", "Pedro", cliente.nombreCliente);
+		    assertEquals("El primer apellido del cliente no ha sido modificado correctamente", "Garcia", cliente.apellido1Cliente);
+		    assertEquals("El segundo apellido del cliente no ha sido modificado correctamente", "Lopez", cliente.apellido2Cliente);
+		    assertEquals("La dirección del cliente no ha sido modificada correctamente", "Calle falsa 321", cliente.direccionCliente);
+		    assertEquals("El número de habitación del cliente no ha sido modificado correctamente", 102, cliente.numeroHabitacion);
+		    assertTrue("La fecha de entrada del cliente no ha sido modificada correctamente", cliente.fechaEntrada.getTime() <= new Date().getTime());
+		    assertTrue("La fecha de salida del cliente no ha sido modificada correctamente", cliente.fechaSalida.getTime() >= new Date().getTime());
+		 
+
+	}
+	
+	@Test
+	public void testeliminarCliente() {
+		 Hotel hotel = new Hotel();
+		 hotel.nuevoCliente("12345678A", "Juan", "Perez", "Garcia", "Calle Mayor 1", 101, new Date(), new Date());
+		    hotel.nuevoCliente("87654321B", "Maria", "Lopez", "Gonzalez", "Calle del Sol 2", 102, new Date(), new Date());
+
+		    int sizeBefore = hotel.listaClientes.size();
+		    int indexToDelete = 0;
+		    hotel.eliminarCliente(indexToDelete);
+		    int sizeAfter = hotel.listaClientes.size();
+		    Cliente deletedCliente = hotel.tomarCliente(indexToDelete);
+
+		    assertEquals(sizeBefore - 1, sizeAfter);
+		    assertNull(deletedCliente);
+
+	}
+	
+	@Test
+	public void testsalvarClientesCategorias() {
+		 Hotel hotel = new Hotel();
+		 hotel.nuevoCliente("12345678A", "Juan", "Perez", "Garcia", "Calle Mayor 1", 101, new Date(), new Date());
+		    hotel.nuevoCliente("87654321B", "Maria", "Lopez", "Gonzalez", "Calle del Sol 2", 102, new Date(), new Date());
+		    hotel.salvarClientesCategorias();
+
+		    File file = new File(hotel.nombreFichero);
+		    assertTrue(file.exists());
+
+	}
+	
+	@Test
+	public void testcargarClientesCategorias() {
+		 Hotel hotel = new Hotel();
+		 hotel.nuevoCliente("12345678A", "Juan", "Perez", "Garcia", "Calle Mayor 1", 101, new Date(), new Date());
+		    hotel.nuevoCliente("87654321B", "Maria", "Lopez", "Gonzalez", "Calle del Sol 2", 102, new Date(), new Date());
+		    hotel.salvarClientesCategorias();
+
+		    hotel = new Hotel();
+		    hotel.cargarClientesCategorias();
+
+		    int expectedClientes = 2;
+		    int expectedCategorias = 3;
+
+		    assertEquals(expectedClientes, hotel.listaClientes.size());
+		    assertEquals(expectedCategorias, hotel.listaCategorias.size());
+
+	}
+	
+}
+	

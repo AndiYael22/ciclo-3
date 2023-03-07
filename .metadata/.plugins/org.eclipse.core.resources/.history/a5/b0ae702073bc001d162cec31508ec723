@@ -1,0 +1,33 @@
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
+import java.io.File;
+import java.util.Date;
+
+import org.junit.Test;
+
+public class Tests {
+
+	@Test
+	public void testeliminarCliente() {
+	    Hotel hotel = new Hotel();
+	    hotel.nuevoCliente("12345678A", "Juan", "Perez", "Garcia", "Calle Mayor 1", 101, new Date(), new Date());
+	    hotel.nuevoCliente("87654321B", "Maria", "Lopez", "Gonzalez", "Calle del Sol 2", 102, new Date(), new Date());
+
+	    int sizeBefore = hotel.listaClientes.size();
+	    int indexToDelete = 0;
+
+	    // Imprime el cliente a eliminar
+	    System.out.println("Cliente a eliminar: " + hotel.tomarCliente(indexToDelete));
+
+	    hotel.eliminarCliente(indexToDelete);
+	    int sizeAfter = hotel.listaClientes.size();
+
+	    // Verifica que el tamaño de la lista se actualice correctamente
+	    assertEquals(sizeBefore - 1, sizeAfter);
+
+	    // Verifica que el cliente eliminado sea nulo
+	    assertNull(hotel.tomarCliente(indexToDelete));
+	}}

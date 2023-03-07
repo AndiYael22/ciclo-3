@@ -1,0 +1,32 @@
+import org.junit.Test;
+
+public class Tests {
+	@Test
+	public void testcrearCategoria() {
+		 Hotel hotel = new Hotel();
+		 
+		
+	}
+	@Test
+	public void testmodificarCategoria() {
+		
+	}
+	@Test
+	public void testagregarCliente() {
+		
+	}
+	@Test
+	public void testeliminarCliente() {
+		
+	}
+	@Test
+	public void testguardarDatos() {
+		
+	}
+	@Test
+	public void testcargarDatos() {
+		
+	}
+
+
+}
